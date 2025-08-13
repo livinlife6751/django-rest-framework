@@ -6,6 +6,10 @@
 
 There are many ways you can contribute to Django REST framework.  We'd like it to be a community-led project, so please get involved and help shape the future of the project.
 
+!!! note
+
+    At this point in its lifespan we consider Django REST framework to be feature-complete. We focus on pull requests that track the continued development of Django versions, and generally do not accept new features or code formatting changes.
+
 ## Community
 
 The most important thing you can do to help push the REST framework project forward is to be actively involved wherever possible.  Code contributions are often overvalued as being the primary way to get involved in a project, we don't believe that needs to be the case.
@@ -26,15 +30,11 @@ The [Django code of conduct][code-of-conduct] gives a fuller set of guidelines f
 
 # Issues
 
-It's really helpful if you can make sure to address issues on the correct channel.  Usage questions should be directed to the [discussion group][google-group].  Feature requests, bug reports and other issues should be raised on the GitHub [issue tracker][issues].
+Our contribution process is that the [GitHub discussions page](https://github.com/encode/django-rest-framework/discussions) should generally be your starting point. Some tips on good potential issue reporting:
 
-Some tips on good issue reporting:
-
-* When describing issues try to phrase your ticket in terms of the *behavior* you think needs changing rather than the *code* you think need changing.
-* Search the issue list first for related items, and make sure you're running the latest version of REST framework before reporting an issue.
-* If reporting a bug, then try to include a pull request with a failing test case.  This will help us quickly identify if there is a valid issue, and make sure that it gets fixed more quickly if there is one.
-* Feature requests will often be closed with a recommendation that they be implemented outside of the core REST framework library.  Keeping new feature requests implemented as third party libraries allows us to keep down the maintenance overhead of REST framework, so that the focus can be on continued stability, bugfixes, and great documentation.
-* Closing an issue doesn't necessarily mean the end of a discussion.  If you believe your issue has been closed incorrectly, explain why and we'll consider if it needs to be reopened.
+* Django REST framework is considered feature-complete. Please do not file requests to change behavior, unless it is required for security reasons or to maintain compatibility with upcoming Django or Python versions.
+* Search the GitHub project page for related items, and make sure you're running the latest version of REST framework before reporting an issue.
+* Feature requests will typically be closed with a recommendation that they be implemented outside the core REST framework library (e.g. as third-party libraries).  This approach allows us to keep down the maintenance overhead of REST framework, so that the focus can be on continued stability and great documentation.
 
 ## Triaging issues
 
@@ -43,8 +43,8 @@ Getting involved in triaging incoming issues is a good way to start contributing
 * Read through the ticket - does it make sense, is it missing any context that would help explain it better?
 * Is the ticket reported in the correct place, would it be better suited as a discussion on the discussion group?
 * If the ticket is a bug report, can you reproduce it? Are you able to write a failing test case that demonstrates the issue and that can be submitted as a pull request?
-* If the ticket is a feature request, do you agree with it, and could the feature request instead be implemented as a third party package?
-* If a ticket hasn't had much activity and it addresses something you need, then comment on the ticket and try to find out what's needed to get it moving again.
+* If the ticket is a feature request, could the feature request instead be implemented as a third party package?
+* If a ticket hasn't had much activity and addresses something you need, then comment on the ticket and try to find out what's needed to get it moving again.
 
 # Development
 
@@ -75,7 +75,7 @@ To run the tests, clone the repository, and then:
     # Setup the virtual environment
     python3 -m venv env
     source env/bin/activate
-    pip install django
+    pip install -e .
     pip install -r requirements.txt
 
     # Run the tests
@@ -204,7 +204,6 @@ If you want to draw attention to a note or warning, use a pair of enclosing line
 [code-of-conduct]: https://www.djangoproject.com/conduct/
 [google-group]: https://groups.google.com/forum/?fromgroups#!forum/django-rest-framework
 [so-filter]: https://stackexchange.com/filters/66475/rest-framework
-[issues]: https://github.com/encode/django-rest-framework/issues?state=open
 [pep-8]: https://www.python.org/dev/peps/pep-0008/
 [build-status]: ../img/build-status.png
 [pull-requests]: https://help.github.com/articles/using-pull-requests

@@ -21,13 +21,16 @@ The initial aim is to provide a single full-time position on REST framework.
 
 [![][sentry-img]][sentry-url]
 [![][stream-img]][stream-url]
-[![][rollbar-img]][rollbar-url]
-[![][esg-img]][esg-url]
+[![][spacinov-img]][spacinov-url]
 [![][retool-img]][retool-url]
 [![][bitio-img]][bitio-url]
 [![][posthog-img]][posthog-url]
+[![][cryptapi-img]][cryptapi-url]
+[![][fezto-img]][fezto-url]
+[![][svix-img]][svix-url]
+[![][zuplo-img]][zuplo-url]
 
-Many thanks to all our [wonderful sponsors][sponsors], and in particular to our premium backers, [Sentry][sentry-url], [Stream][stream-url], [Rollbar][rollbar-url], [ESG][esg-url], [Retool][retool-url], [bit.io][bitio-url], and [PostHog][posthog-url].
+Many thanks to all our [wonderful sponsors][sponsors], and in particular to our premium backers, [Sentry][sentry-url], [Stream][stream-url], [Spacinov][spacinov-url], [Retool][retool-url], [bit.io][bitio-url], [PostHog][posthog-url], [CryptAPI][cryptapi-url], [FEZTO][fezto-url], [Svix][svix-url], and [Zuplo][zuplo-url].
 
 ---
 
@@ -37,13 +40,11 @@ Django REST framework is a powerful and flexible toolkit for building Web APIs.
 
 Some reasons you might want to use REST framework:
 
-* The [Web browsable API][sandbox] is a huge usability win for your developers.
+* The Web browsable API is a huge usability win for your developers.
 * [Authentication policies][authentication] including optional packages for [OAuth1a][oauth1-section] and [OAuth2][oauth2-section].
 * [Serialization][serializers] that supports both [ORM][modelserializer-section] and [non-ORM][serializer-section] data sources.
 * Customizable all the way down - just use [regular function-based views][functionview-section] if you don't need the [more][generic-views] [powerful][viewsets] [features][routers].
 * [Extensive documentation][docs], and [great community support][group].
-
-There is a live example API for testing purposes, [available here][sandbox].
 
 **Below**: *Screenshot from the browsable API*
 
@@ -53,8 +54,8 @@ There is a live example API for testing purposes, [available here][sandbox].
 
 # Requirements
 
-* Python (3.5, 3.6, 3.7, 3.8, 3.9)
-* Django (2.2, 3.0, 3.1, 3.2)
+* Python 3.9+
+* Django 4.2, 5.0, 5.1, 5.2
 
 We **highly recommend** and only officially support the latest patch release of
 each Python and Django series.
@@ -66,11 +67,12 @@ Install using `pip`...
     pip install djangorestframework
 
 Add `'rest_framework'` to your `INSTALLED_APPS` setting.
-
-    INSTALLED_APPS = [
-        ...
-        'rest_framework',
-    ]
+```python
+INSTALLED_APPS = [
+    ...
+    'rest_framework',
+]
+```
 
 # Example
 
@@ -88,9 +90,10 @@ Startup up a new project like so...
 Now edit the `example/urls.py` module in your project:
 
 ```python
-from django.urls import path, include
 from django.contrib.auth.models import User
-from rest_framework import serializers, viewsets, routers
+from django.urls import include, path
+from rest_framework import routers, serializers, viewsets
+
 
 # Serializers define the API representation.
 class UserSerializer(serializers.HyperlinkedModelSerializer):
@@ -108,7 +111,6 @@ class UserViewSet(viewsets.ModelViewSet):
 # Routers provide a way of automatically determining the URL conf.
 router = routers.DefaultRouter()
 router.register(r'users', UserViewSet)
-
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
@@ -171,8 +173,6 @@ Full documentation for the project is available at [https://www.django-rest-fram
 
 For questions and support, use the [REST framework discussion group][group], or `#restframework` on libera.chat IRC.
 
-You may also want to [follow the author on Twitter][twitter].
-
 # Security
 
 Please see the [security policy][security-policy].
@@ -183,28 +183,32 @@ Please see the [security policy][security-policy].
 [codecov]: https://codecov.io/github/encode/django-rest-framework?branch=master
 [pypi-version]: https://img.shields.io/pypi/v/djangorestframework.svg
 [pypi]: https://pypi.org/project/djangorestframework/
-[twitter]: https://twitter.com/_tomchristie
 [group]: https://groups.google.com/forum/?fromgroups#!forum/django-rest-framework
-[sandbox]: https://restframework.herokuapp.com/
 
 [funding]: https://fund.django-rest-framework.org/topics/funding/
 [sponsors]: https://fund.django-rest-framework.org/topics/funding/#our-sponsors
 
 [sentry-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/sentry-readme.png
 [stream-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/stream-readme.png
-[rollbar-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/rollbar-readme.png
-[esg-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/esg-readme.png
+[spacinov-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/spacinov-readme.png
 [retool-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/retool-readme.png
 [bitio-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/bitio-readme.png
 [posthog-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/posthog-readme.png
+[cryptapi-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/cryptapi-readme.png
+[fezto-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/fezto-readme.png
+[svix-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/svix-premium.png
+[zuplo-img]: https://raw.githubusercontent.com/encode/django-rest-framework/master/docs/img/premium/zuplo-readme.png
 
 [sentry-url]: https://getsentry.com/welcome/
-[stream-url]: https://getstream.io/?utm_source=drf&utm_medium=sponsorship&utm_content=developer
-[rollbar-url]: https://rollbar.com/?utm_source=django&utm_medium=sponsorship&utm_campaign=freetrial
-[esg-url]: https://software.esg-usa.com/
+[stream-url]: https://getstream.io/?utm_source=DjangoRESTFramework&utm_medium=Webpage_Logo_Ad&utm_content=Developer&utm_campaign=DjangoRESTFramework_Jan2022_HomePage
+[spacinov-url]: https://www.spacinov.com/
 [retool-url]: https://retool.com/?utm_source=djangorest&utm_medium=sponsorship
 [bitio-url]: https://bit.io/jobs?utm_source=DRF&utm_medium=sponsor&utm_campaign=DRF_sponsorship
 [posthog-url]: https://posthog.com?utm_source=drf&utm_medium=sponsorship&utm_campaign=open-source-sponsorship
+[cryptapi-url]: https://cryptapi.io
+[fezto-url]: https://www.fezto.xyz/?utm_source=DjangoRESTFramework
+[svix-url]: https://www.svix.com/?utm_source=django-REST&utm_medium=sponsorship
+[zuplo-url]: https://zuplo.link/django-gh
 
 [oauth1-section]: https://www.django-rest-framework.org/api-guide/authentication/#django-rest-framework-oauth
 [oauth2-section]: https://www.django-rest-framework.org/api-guide/authentication/#django-oauth-toolkit
